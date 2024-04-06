@@ -1,0 +1,181 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const variables = {
+	titulo: "Gracias",
+	persona: "Gracias",
+}
+
+const url = new URL(Astro.request.url);
+const cantidad = url.searchParams.get('c');
+const textoInicio = primerTexto(Number(cantidad));
+
+function primerTexto(cantidad: number) {
+	let texto = '';
+	const textoSuplente = `lo cual me parece poco por todo.`;
+	switch (cantidad) {
+		case 1:
+			texto = `Solo intentaste rechazarlo 1 vez, ${textoSuplente}`;
+			break;
+		case 0:
+			texto = 'No puedo creer que hayas puesto que sí directamente.';
+			break;
+		default:
+			texto = `Solo intentaste rechazarlo ${cantidad} veces, ${textoSuplente}`;
+			break
+	}
+	return texto;
+}
+---
+
+<Layout title=`${variables.titulo}` >
+	<main>
+		<p class="m-0 text-center">Solo puedo decir</p>
+		<h1><span class="text-gradient">{variables.persona}</span></h1>
+		<audio autoplay>
+			<source src="/cancion.mp3" type="audio/mpeg">
+			Tu navegador no soporta la etiqueta de audio.
+		</audio>
+
+		<div class="instructions">
+			<p>
+				{textoInicio} Pero sacando el chiste, y ya que te dije todo lo que necesitaba por Whatsapp, no quiero seguir acá diciendo lo tonto que soy. Simplemente quiero que sepas lo importante que sos para mi, ayer, hoy y siempre.
+			</p>
+			<p>
+				<strong>GRACIAS</strong> porque siempre estuviste y estás para mi, a pesar de cualquier cosa, o que a veces quizás no hablabamos tanto o nos podiamos dejar de ver durante mucho tiempo. Sin embargo, <strong>SIEMPRE</strong> estas para mi.
+			</p>
+			<p>
+				Hoy quiero decirte, aunque lo dije muchas veces, que sos de las personas mas importantes en mi vida, de las mas influyentes, de las que son mi ejemplo a seguir, y que alguien como vos no se encuentra dos veces.
+			</p>
+			<p>
+				Si bien deberías saber lo que vales y todo lo que sos, yo quiero volver a repetirlo porque quiero que nunca lo olvides. Sos <strong>única y especial</strong>, siempre estas con una sonrisa que al verla es imposible estar triste. Sos un <strong>amor</strong>, <strong>súper tierna</strong> (tengo tu primer mensaje de cumpleaños que me mandaste guardado, que posiblemente es el único que tengo, que al día de hoy no puedo creer todo lo que pusiste que es una ternura y encima me atrevo a robarte la canción que pusiste. sumado a lo tierna que sos siempre, obvio), <strong>cariñosa</strong> (tus abrazos sos lo mejor que le puede pasar a alguien), <strong>compañera</strong> (estas siempre por y para todo), <strong>inteligente</strong>, <strong>graciosa</strong> y fácil de hacer reir, lo cual me encanta (fundamental que entiendas mis referencias a los Simpsons). Hay mil cosas más que te hacen especial, no me daría toda la web para decirlo.
+			</p>
+			<p>
+				Como dice la canción que deberías estar escuchando de fondo, traducida:  <br>
+				"Siempre tendrás mi hombro cuando llores, <br>
+				nunca lo dejaré pasar, nunca diré adiós <br>
+				Puedes contar conmigo, como uno, dos, tres, <br>
+				y estaré allí."
+			</p>
+			<p>
+				Nunca olvides que sos <strong>ÚNICA</strong>, no existe nadie más como vos. Y nunca voy a estar mas <strong>agradecido por tenerte en mi vida</strong> y no podría imaginarmela sin vos.
+			</p>
+			<p>
+				Así que, nuevamente, quiero pedir disculpas por no estar este tiempo, no hay justificación que valga ni lo mal que pueda estar. Ojalá pueda estar como antes, con todo lo que ya dije por wsp. Pero se que voy a estar bien y <strong>sé que con vos a mi lado voy a estar incluso mejor, completo</strong>. 
+			</p>
+			<p>
+				<strong>Prometo</strong> que nunca jamás en tu vida alguien te va a volver a molestar de mi parte o que yo no esté aunque sea un mísero segundo.
+			</p>
+			<p class="text-center">
+				<strong>Te amo hasta el infito y más allá, hoy y siempre</strong>
+			</p>
+			<p>
+				Para sellar todo lo que dije y pienso, no quiero dejar de poner mi firma, junto a la tuya que no se si es merecida, pero estarán ambas. Va a representar todo lo que habíamos prometido hace un tiempo y le sumo todo esto.
+			</p>
+		</div>
+
+		<img src="./firmas.jpg" alt="Firmas" style={{width: '100%'}}>
+
+		<button id="volverButton" class="btn text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" style="margin-top: 12px;">Volver</button>
+	</main>
+</Layout>
+
+<script>
+	const volverButton = document.getElementById('volverButton');
+	volverButton?.addEventListener('click', goBack);
+  
+	function goBack() {
+	  window.history.back();
+	}
+  </script>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1rem 0;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+		position: relative; /* Cambiado de absolute a relative */
+		height: 100vh;
+		z-index: 1;
+	}
+	main::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image: url("moon.svg");
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		opacity: 0.2;
+		z-index: -1;
+	}
+	.astro-a {
+		position: absolute;
+		top: -32px;
+		left: 50%;
+		transform: translatex(-50%);
+		width: 220px;
+		height: auto;
+		z-index: -1;
+	}
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 0.5em;
+		margin-top: 0;
+	}
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+	.instructions {
+		margin-bottom: 2rem;
+		border: 1px solid rgba(var(--accent-light), 25%);
+		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
+		padding: 1.5rem;
+		border-radius: 8px;
+		font-size: 20px;
+	}
+	.instructions code {
+		font-size: 0.8em;
+		font-weight: bold;
+		background: rgba(var(--accent-light), 12%);
+		color: rgb(var(--accent-light));
+		border-radius: 4px;
+		padding: 0.3em 0.4em;
+	}
+	.instructions strong {
+		color: rgb(var(--accent-light));
+	}
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		gap: 2rem;
+		padding: 0;
+	}
+	.text-center{
+		text-align: center;
+	}
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	.m-0{
+		margin-bottom: 0;
+	}
+	p{
+		margin-bottom: 15px !important;
+	}
+</style>
